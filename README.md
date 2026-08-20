@@ -4,6 +4,17 @@ Hi! These are my personal notes and practice commands for learning Docker. I wro
 
 ---
 
+# Strict Docker Rules
+
+These simple guidelines prevent command failures and keep configuration files working correctly:
+
+* **Always use CAPITAL LETTERS for commands:** Main instructions inside a configuration file (like `FROM`, `RUN`, `WORKDIR`, `COPY`, and `CMD`) must always be written in UPPERCASE.
+* **No file extensions for Dockerfile:** The file used to build a custom system image must strictly be named `Dockerfile` with a capital 'D' and absolutely no extension (never use `Dockerfile.txt` or `Dockerfile.yaml`).
+* **Port mapping order is Host to Container:** When forwarding network traffic using `-p 8080:80`, the first number (`8080`) is the port on your network router/host machine, and the second number (`80`) is the port inside the isolated container.
+* **Containers are temporary, Volumes are permanent:** Any data written inside a standard running container is destroyed forever when the container is deleted. To keep data safe, a `docker volume` must be attached.
+  
+---
+
 ## 1. Basic Docker Commands
 - `docker --version` or `docker -v` -> To check if Docker is installed or not.
 - `docker pull IMAGE_NAME` -> To create a new image from the internet.
